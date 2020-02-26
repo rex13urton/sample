@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset='utf-8' />
+  <title>Collab1925B</title>
+  <meta name='robots' content='noindex, nofollow'>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://static-assets.mapbox.com/gl-js-pricing/dist/mapbox-gl.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <link rel="icon" href="images///cropped-ci-favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- link to social icon library -->
+  <link href='https://static-assets.mapbox.com/gl-js-pricing/dist/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="CSS/1925B.css" />
+  <style></style>
+</head>
+
+<body>
+    <!-- Navigation bar, top of page -->
+<div class="topnav">
+        <a id="logo" href="http://www.centuryinitiative.ca/""><img src="images//CI-logo-2.png" alt="Rex'n Maps" title="Rex'n Maps Consulting Logo" style="width:240px;height:50px;"></a>
+        <a id="logo" href="http://www.flemingcollege.ca/""><img src="images//fleminglogo.png" alt="Rex'n Maps" title="Rex'n Maps Consulting Logo" style="width:50px;height:50px;"> <h8> Fleming College</h8></a>
+
+        <div class="topnav-right">
+            <a href="index.html">Rex</a>
+            <a href="report.html">Final Report</a>
+            <a href="resume.html">Resume</a>
+            <a class="active"  href="1925B.html">Final Solution</a>
+                </div>
+    </div>
+    
+    <!-- <img src="images//rex.png" alt="Rex'n Maps" title="Rex'n Maps Logo" class="logo" style="width:150px;height:175px;">
+    <h1 style="text-align:center">Project 1925B Final Solution</h1> -->
+
+<div class="logo">
+        <div id='console'>
+                <h1>A Growing Country</h1>
+                <p>3 Immigration Scenarios that will define our future!</p>
+                <div class='session'>
+                  <h2>Population</h2>
+                  <div class='row colors'>
+                  </div>
+                  <div id='Country-legend'>
+                  <div class='row labels'>
+                    <div class='label'>18.9 Million</div>
+                    <div class='label'>40 Million</div>
+                    <div class='label'>60 Million</div>
+                    <div class='label'>80 Million</div>
+                    <div class='label'>100 Million</div>
+                    <!-- <div class='label'>6</div>
+                    <div class='label'>7</div>
+                    <div class='label'>8</div>
+                    <div class='label'>9</div> -->
+                  </div>
+                </div>
+                <div id='Provinces-legend'>
+                    <div class='row labels'>
+                      <div class='label2'>19,000</div>
+                      <div class='label2'>100,000</div>
+                      <div class='label2'>500,000</div>
+                      <div class='label2'>1 Million</div>
+                      <div class='label2'>10 Million</div>
+                      <div class='label2'>39 Million</div>
+                      <!-- <div class='label'>75</div>
+                      <div class='label'>10</div>
+                      <div class='label'>250</div> -->
+                    </div>
+                  </div>
+                  <div id='Cities-legend'>
+                    <div class='row labels'>
+                      <div class='label3'> <70,000 </div>
+                      <div class='label3'>500,000</div>
+                      <div class='label3'>4.5 Million</div>
+                      <div class='label3'>9 Million</div>
+                      <div class='label3'>13 Million</div>
+                      <div class='label3'>>16 Million</div>
+                      <!-- <div class='label'>75</div>
+                      <div class='label'>10</div>
+                      <div class='label'>250</div> -->
+                    </div>
+                  </div>
+  
+                </div>
+        <div class='session' id='sliderbar'>
+                <h2>Year: <label id='active-year'>2016</label></h2>
+                <input id='slider' class='row' type='range' min='1' max='5' step='1' value='1' />
+              </div>
+              <div class='session'>
+                    <h2>Immigration Scenario</h2>
+                    <div class='row' id='buttons'>
+                      <input id='1' type='radio' name='toggle' value= '1' checked='checked'>
+                      <label for='1'>Zero Immigration Scenario</label>
+                      <input id='2' type='radio' name='toggle' value='2'>
+                      <label for='2'>Status Quo Scenario</label>
+                      <input id='3' type='radio' name='toggle' value='3'>
+                      <label for='3'>Hundred Million Scenario</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+<!-- 
+  <div id='Country-legend' class='legend'>
+    <h4>Population</h4>
+    <div><span style='background-color: #610000'></span>25,000,000</div>
+    <div><span style='background-color: #870000'></span>10,000,000</div>
+    <div><span style='background-color: #AE0000'></span>7,500,000</div>
+    <div><span style='background-color: #D40000'></span>5,000,000</div>
+    <div><span style='background-color: #DB2E2E'></span>2,500,000</div>
+    <div><span style='background-color: #E35C5C'></span>1,000,000</div>
+    <div><span style='background-color: #EB8B8B'></span>750,000</div>
+    <div><span style='background-color: #F3B9B9'></span>500,000</div>
+    <div><span style='background-color: #F7D0D0'></span>0</div>
+</div>
+
+<div id='Provinces-legend' class='legend' style='display: none;'>
+    <h4>Population</h4>
+    <div><span style='background-color: #723122'></span>1,000,000</div>
+    <div><span style='background-color: #8B4225'></span>500,000</div>
+    <div><span style='background-color: #A25626'></span>100,000</div>
+    <div><span style='background-color: #B86B25'></span>50,000</div>
+    <div><span style='background-color: #CA8323'></span>10,000</div>
+    <div><span style='background-color: #DA9C20'></span>5,000</div>
+    <div><span style='background-color: #E6B71E'></span>1,000</div>
+    <div><span style='background-color: #EED322'></span>100</div>
+    <div><span style='background-color: #F2F12D'></span>0</div>
+</div> -->
+
+
+<!-- <div id='map'></div> -->
+<!-- <script src='//d3js.org/d3.v3.min.js' charset='utf-8'></script> -->
+<div id='map'></div>
+<script src='JS/1925B_json.js'></script>
+  <script src='JS/mbkey.js'> </script>
+  <script src='JS/1925B.js'>  </script>
+
+
+
+
+  
+
+</body>
+
+</html>

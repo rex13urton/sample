@@ -1,0 +1,231 @@
+
+
+body, html {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
+	background-color: #e6e6e6;
+}
+.box {
+    background-color: #d3d3d3;
+    height: auto;
+    margin: 0;
+    border: 2px solid #9a37ac;
+    padding: 25px;
+    margin: 25px;
+}
+.box1 {
+    background-color: #d3d3d3;
+    height: auto;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 200px;
+  overflow: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#center1 {
+	text-align: center;
+	margin: 0;
+}
+/* .note holding span colour codes*/
+/*Dark blue colour: #0f396d*/
+.note {
+    font-size: 100%;
+    color: #0f396d;
+}
+/*Purple colour code: #9a37ac */
+.notee {
+    font-size: 100%;
+    color: #9a37ac;
+}
+/* Top of the page logo*/
+.logo {
+    display: block;
+    width: 55%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 2%;
+}
+/* Top navigational bar codes */
+/*Image citation: Porter, A. (2016). Images of the Aurora Borealis. [online] Andy Porter Images Blog. Available at: http://andyporterimages.com/images-of-the-milky-way/ [Accessed 15 Nov. 2018].*/
+.topnav {
+	overflow: hidden;
+	background-image: url("https://www.star-registration.com/media/wysiwyg/info/stars_desktop_1.5x.jpg");
+	height: 70px;
+}
+.topnav a {
+	float: left;
+	color: #FFFFFF;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 10px;
+	text-decoration: none;
+}
+.topnav a.active {
+	background-color: #9a37ac;
+	color: #FFFFFF;
+}
+.topnav-right {
+	float: right;
+	margin-top: 15px;
+}
+/* Sub-navigation menu */
+.subnav {
+    float: left;
+    overflow: hidden;
+}
+.subnav .subnavbtn {
+    font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 15px;
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+.subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #9a37ac;
+    width: 100%;
+    z-index: 1;
+}
+.subnav-content a {
+    float: right;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+/* Nav hover colours*/
+.subnav:hover .subnav-content {
+    display: block;
+}
+.subnav-content a {
+    float: right;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.subnav-content a:hover {
+    background-color: #eee;
+    color: #000000;
+}
+/*Setting the body and html characteristics*/
+body, html {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
+	background-color: #e6e6e6;
+}
+
+/* Css formatting for js clock */
+#clock {
+	color: #00004d;
+	font-size: 40px;
+	font-family: calibri;
+	text-align:center;
+	padding-top:25px;
+}
+
+/*Css used for profile pages*/
+/*For profile box 1,2,3,4*/
+
+#font{
+	font-family: calibri;
+	font-size: 17px;
+}
+footer { 
+display: block;
+}
+.footer {
+   top: auto;
+   bottom: 0;
+   width: 100%;
+   background-color: #333;
+   color: #FFFFFF;
+   text-align: center;
+ font-size: 2em;
+ padding-top: 5px;
+}
+.copyright {
+	font-size: .6em;
+	color: #FFFFFF;
+}
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.star-registration.com/media/wysiwyg/info/stars_desktop_1.5x.jpg");
+  height: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+}
+.hero-text button {
+	border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px 25px;
+  color: black;
+  background-color: #dddddd;
+  text-align: center;
+  cursor: pointer;
+}
+.hero-text button:hover {
+  background-color: #9a37ac;
+  color: #FFFFFF;
+}
+.text-break {
+	width: 5px;
+	height: 10000000000px;
+	border: none;
+	position: relative;
+}
+.img1 [
+  background-position: center;
+]
+/* .p1-gradient-bg, .banner-left .primary-btn, .home-about-right .primary-btn, .facts-area, .thumb .overlay-bg, .price-area .single-price:hover, .brands-area, .about-banner, .sb_bar {
+    background: -moz-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
+    background: -webkit-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
+    background: -ms-linear-gradient(0deg, #8490ff 0%, #62bdfc 100%);
+  } */

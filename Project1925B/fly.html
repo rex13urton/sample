@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset='utf-8' />
+  <title>Collab1925B</title>
+  <meta name='robots' content='noindex, nofollow'>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://static-assets.mapbox.com/gl-js-pricing/dist/mapbox-gl.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <link rel="icon" href="images///cropped-ci-favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- link to social icon library -->
+  <link href='https://static-assets.mapbox.com/gl-js-pricing/dist/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="CSS/1925B.css" />
+    <style>
+        body { margin:0; padding:0; }
+        /* #map { position:absolute; top:0; bottom:0; width:100%; } */
+    </style>
+</head>
+<body>
+
+<style>
+.map-overlay-container {
+    position: absolute;
+    width: 25%;
+    top: 45%;
+    left: 0;
+    padding: 10px;
+    z-index: 1;
+}
+
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow:0 1px 2px rgba(0,0,0,0.20);
+}
+
+.map-overlay h2,
+.map-overlay p {
+    margin: 0 0 10px;
+}
+</style>
+
+
+
+<!-- Navigation bar, top of page -->
+<div class="topnav">
+    <a id="logo" href="http://www.centuryinitiative.ca/""><img src="images//CI-logo-2.png" alt="Rex'n Maps" title="Rex'n Maps Consulting Logo" style="width:240px;height:50px;"></a>
+    <a id="logo" href="http://www.flemingcollege.ca/""><img src="images//fleminglogo.png" alt="Rex'n Maps" title="Rex'n Maps Consulting Logo" style="width:50px;height:50px;"> <h8> Fleming College</h8></a>
+
+    <div class="topnav-right">
+        <a href="index.html">Rex</a>
+        <a href="report.html">Final Report</a>
+        <a href="resume.html">Resume</a>
+        <a class="active"  href="1925B.html">Final Solution</a>
+            </div>
+</div>
+
+<!-- <img src="images//rex.png" alt="Rex'n Maps" title="Rex'n Maps Logo" class="logo" style="width:150px;height:175px;">
+<h1 style="text-align:center">Project 1925B Final Solution</h1> -->
+
+<div class="logo">
+    <div id='console'>
+            <h1>A Growing Country</h1>
+            <p>3 Immigration Scenarios that will define our future!</p>
+            <div class='session'>
+              <h2>Population</h2>
+              <div class='row colors'>
+              </div>
+              <div id='Country-legend'>
+              <div class='row labels'>
+                <div class='label'>18.9 Million</div>
+                <div class='label'>40 Million</div>
+                <div class='label'>60 Million</div>
+                <div class='label'>80 Million</div>
+                <div class='label'>100 Million</div>
+                <!-- <div class='label'>6</div>
+                <div class='label'>7</div>
+                <div class='label'>8</div>
+                <div class='label'>9</div> -->
+              </div>
+            </div>
+            <div id='Provinces-legend'>
+                <div class='row labels'>
+                  <div class='label2'>19,000</div>
+                  <div class='label2'>100,000</div>
+                  <div class='label2'>500,000</div>
+                  <div class='label2'>1 Million</div>
+                  <div class='label2'>10 Million</div>
+                  <div class='label2'>39 Million</div>
+                  <!-- <div class='label'>75</div>
+                  <div class='label'>10</div>
+                  <div class='label'>250</div> -->
+                </div>
+              </div>
+              <div id='Cities-legend'>
+                <div class='row labels'>
+                  <div class='label3'> <70,000 </div>
+                  <div class='label3'>500,000</div>
+                  <div class='label3'>4.5 Million</div>
+                  <div class='label3'>9 Million</div>
+                  <div class='label3'>13 Million</div>
+                  <div class='label3'>>16 Million</div>
+                  <!-- <div class='label'>75</div>
+                  <div class='label'>10</div>
+                  <div class='label'>250</div> -->
+                </div>
+              </div>
+
+            </div>
+    <div class='session' id='sliderbar'>
+            <h2>Year: <label id='active-year'>2016</label></h2>
+            <input id='slider' class='row' type='range' min='1' max='5' step='1' value='1' />
+          </div>
+          <div class='session'>
+                <h2>Immigration Scenario</h2>
+                <div class='row' id='buttons'>
+                  <input id='1' type='radio' name='toggle' value= '1' checked='checked'>
+                  <label for='1'>Zero Immigration Scenario</label>
+                  <input id='2' type='radio' name='toggle' value='2'>
+                  <label for='2'>Status Quo Scenario</label>
+                  <input id='3' type='radio' name='toggle' value='3'>
+                  <label for='3'>Hundred Million Scenario</label>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        
+<div id='map'></div>
+
+
+
+
+
+<div class='map-overlay-container'>
+  <div class='map-overlay'>
+    <h2 id='location-title'></h2>
+    <!-- <p <div>'<canvas id="pie-chart-can" width="500" height="500"></canvas>'> </div></p> -->
+    <p id='location-description'></p>
+
+    <small>Text credit: <canvas id="pie-chart-can" width="500" height="500"></canvas></small>
+  </div>
+</div>
+<script src='JS/1925B_json.js'></script>
+  <script src='JS/mbkey.js'> </script>
+
+<script>
+
+
+
+     
+
+mapboxgl.accessToken = mbkey;
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/rex13/cjwhx7qoa0ivy1dqxqho71m94',
+    center: [-98.357977,  60.093385],
+    maxZoom: 16,
+    minZoom: 1,
+    zoom: 3.5
+});
+
+
+
+
+var ProvinceArray = allinfo.filter(function (Provs) {
+    return Provs.Sc == scenario &&
+    Provs.Yr == year &&
+    Provs.Type === 'Province'
+});
+
+// Master check of information drawn from json file
+// console.log(ProvinceArray[0].NAME, ProvinceArray[1].NAME)
+
+// Creates an array of just province names and GDP, stops when all provinces are included
+var NameArr =[];
+var GDPArr = [];
+for (i = 0; i < ProvinceArray.length; i++){
+    NameArr[i] = ProvinceArray[i].NAME;
+    GDPArr[i] = parseInt(ProvinceArray[i].GDP);
+};
+
+// Master check of province name array and province GDP array drawn from json.
+console.log(NameArr);
+console.log(GDPArr);
+console.log(scenario);
+
+// Begin to make the doughnut chart from chart.js library
+var chartMaker1 = function (l) {
+    new Chart(document.getElementById("pie-chart-can"), {
+        type: 'doughnut',
+        data: {
+            labels: NameArr,
+            datasets: [
+            {
+                backgroundColor: ["#D40000", "#54B247", "#008CCC","#BECD2B",
+                                  "#AE0000","#45923B","#0073A7","#9CA824",
+                                  "#BC2E2E","#73C068","#2EA0D5","#C9D6517",
+                                  "#CCCCCC"],
+                data: GDPArr
+            }
+            ]
+        },
+        options: {
+            legend: { 
+                display: false
+            },
+            title: {
+                display: true,
+                text: 'GDP'
+            }
+        }
+    });
+
+
+};
+
+
+
+
+
+
+function rotateCamera(timestamp) {
+// clamp the rotation between 0 -360 degrees
+// Divide timestamp by 100 to slow rotation to ~10 degrees / sec
+map.rotateTo((timestamp / 100) % 1000, {duration: 0});
+// Request the next frame of the animation.
+requestAnimationFrame(rotateCamera);
+}
+// rotateCamera(0);
+
+var title = document.getElementById('location-title');
+var description = document.getElementById('location-description');
+// var year = document.getElementById('location-year');
+
+var locations = [{
+    "id": "2",
+    "year":"3",
+    "title": "Canada",
+    "description": '<canvas id="pie-chart-can" width="500" height="500"></canvas>' + 
+    
+    "This is where hip-hop was born, where the Yankees became a dynasty and where you can find New York City's leading zoo and botanical garden.",
+    "camera": {
+        center: [-98.357977,  60.093385 ],
+        zoom: 3,
+        pitch: 50
+    }
+}, {
+    "id": "4",
+    "year":"5",
+    "title": "Canada131313",
+    "description": '<canvas id="pie-chart-can" width="500" height="500"></canvas>' + 
+    
+    "This is where hip-hop was born, where the Yankees became a dynasty and where you can find New York City's leading zoo and botanical garden.",
+    "camera": {
+        center: [-98.357977,  60.093385 ],
+        zoom: 3,
+        pitch: 50
+    }
+}, {
+    "id": "3",
+    "year":"3",
+    "title": "Provinces",
+    "description": "No matter how hip it looks on TV, NYC's most populous borough is best experienced in person. Read on to find out about live music, Prospect Park, Nets basketball and more.",
+    "camera": {
+        center: [-98.357977,  60.093385 ],
+        bearing: -8.9,
+        zoom: 3.5
+    }
+}, {
+    "id": "1",
+    "title": "Southern Ontario",
+    "description": "Even if you think you know Manhattan—its world-class museums, fine dining and unforgettable views—the borough always has something new and exciting in store.",
+    "camera": {
+        center: [-79.26, 43.506],
+        bearing: 25.3,
+        zoom: 5
+    }
+}, {
+    "id": "4",
+    "title": "Queens",
+    "description": "Taste food from around the globe, watch Mets baseball and US Open tennis, see cutting-edge art and more in one of the world's most diverse places.",
+    "camera": {
+        center: [-73.8432, 40.6923],
+        bearing: 36,
+        zoom: 2
+    }
+}, {
+    "id": "5",
+    "title": "Staten Island",
+    "description": "Take a free ferry ride to an island getaway filled with historic architecture, stunning views, gardens and many family-friendly attractions.",
+    "camera": {
+        center: [-74.1991, 40.5441],
+        bearing: 28.4,
+        zoom: 3
+    }
+}, {
+    "title": "Canada is doomed",
+    "description": "rex was here",
+    "camera": {
+        center: [-98.357977,  60.093385 ],
+        zoom: 3,
+        bearing: 0,
+        pitch: 0
+    }
+}];
+
+
+
+
+
+
+var autoyr = null;
+function playback(index) {
+    
+    title.textContent = locations[index].title;
+    description.textContent = locations[index].description;
+    year.textContent = locations[index].year;
+
+    filterYear = year;
+
+
+    // filterScenario = parseInt(locations[index].scenario);
+
+    // Only show the polygon feature that cooresponds to `borocode` in the data
+
+    highlightFeatures(locations[index].year ? locations[index].year : '');
+    // highlightBorough(locations[index].id ? locations[index].id : '');
+
+    // Animate the map position based on camera properties
+    map.flyTo(locations[index].camera);
+
+    map.once('moveend', function() {
+        // Duration the slide is on screen after interaction
+        window.setTimeout(function() {
+            // Increment index
+            index = (index + 1 === locations.length) ? 0 : index + 1;
+            playback(index);
+
+        }, 3000); // After callback, show the location for 3 seconds.
+    });
+
+
+function highlightFeatures(code) {
+    map.setFilter('Country',['all', locations[index].year, locations[index]scenario);
+    // map.setFilter('Provinces', ['all', filterYear, filterScenario]);
+    // map.setFilter('Cities', ['all', filterYear, filterScenario]);
+}
+}
+
+// function (autoyear){
+    
+// }
+
+// var autoyear = function(){
+// for (i=1; i <6; i++){
+//     if (i>5){
+//         i=1;
+//     } else if (i<=5){
+//         var year = 1;
+//         autoyr = year
+//         if (year<6){ 
+//             setInterval(function() {year = year++}, 1000);
+//         } else {
+//             year = 1;
+//         }
+// console.log(year);
+//     };
+// };
+// };
+
+
+
+// Display the last title/description first
+title.textContent = locations[locations.length - 1].title;
+description.textContent = locations[locations.length - 1].description;
+// Zoom threshold is set 
+var zoomThreshold1 = 3.5;
+var zoomThreshold2 = 4;
+
+
+var year = 1;
+    var scenario =1;
+    var filterYear = ['==', ['number', ['get', 'Yr']], 1];
+    var filterScenario = ['==', ['number', ['get', 'Sc']], 1];
+
+
+map.on('load', function() {
+
+
+
+    map.addSource('CanCountry', {
+        'type': 'vector',
+        'url': 'mapbox://rex13.735gz6l4'
+    });
+
+    map.addSource('Province', {
+        'type': 'vector',
+        'url': 'mapbox://rex13.bqapiacs'
+    });
+    
+    // Deining the map source, linking to tileset
+    map.addSource('City', {
+        'type': 'vector',
+        'url': 'mapbox://rex13.9ja1pwne'
+    });
+
+    // Adding Country layer from tileset
+    map.addLayer({
+        // Defining the ID of the layer
+        'id': 'Country',
+        // Linking to the map source, defined above in map.addSource
+        'source': 'CanCountry',
+        // Calling in the correct layer from the defined tileset
+        'source-layer': 'Canada',
+        // Setting the max zoom to zoom threshold
+        'maxzoom': zoomThreshold1,
+        //defining the effects to be applied to the polygons derived from tileset source
+        'type': 'fill-extrusion',
+        // Applying the paint to the function to the visible polygons
+        'paint': {
+            // Defines the extruded polygons colour
+            'fill-extrusion-color': [
+                // Obtains data from attirbutes in tileset, creates smooth results between inputs
+                'interpolate',
+                // Interpolates between defined stops below, stops below and starts above defined intervals
+                ['linear'],
+                // Retrieving population from tileset attributes
+                ['get', 'POP'],
+                // Defining the intervals, assigns colour gradient to intervals
+                18867000, '#F7D0D0',
+                29017000, '#F3B9B9',
+                39167000, '#EB8B8B',
+                49317000, '#E35C5C',
+                59467000, '#DB2E2E',
+                69617000, '#D40000',
+                79767000, '#AE0000',
+                89917000, '#870000',
+                100067000, '#610000'
+                ],
+            // Defines extruded polygon's opacity (transparency)    
+            'fill-extrusion-opacity': 0.5,
+            // Defines the extruded polygon's height, based off of the GDP control set in the attributes of the tileset
+            'fill-extrusion-height': ['get', 'GDPcontrol'],
+            // Defines the base of the extruded polygons, set to the top of the basemap
+            'fill-extrusion-base': 0,
+        },
+        'filter': ['all', filterYear, filterScenario]
+    }, 'PROV-SM-LABELS');
+
+
+    // Start the playback animation for each borough
+    map.addLayer({
+        // Defining the ID of the layer
+        'id': 'Provinces',
+        // Linking to the map source, defined above in map.addSource
+        'source': 'Province',
+        // Calling in the correct layer from the defined tileset
+        'source-layer': 'Provinces',
+        // Setting the max zoom to zoom threshold
+        'maxzoom': zoomThreshold2,
+        'minzoom': zoomThreshold1,
+        //defining the effects to be applied to the polygons derived from tileset source
+        'type': 'fill-extrusion',
+        // Filter visualization of polygon by zoomed layer visibility
+        // 'filter': ['==', 'isProvinces', true],
+        // Applying the paint to the function to the visible polygons
+        'paint': {
+            // Defines the extruded polygons colour
+            'fill-extrusion-color': [
+                // Obtains data from attirbutes in tileset, creates smooth results between inputs
+                'interpolate',
+                // Obtains data from attirbutes in tileset, creates smooth results between inputs
+                ['linear'],
+                // Retrieving population from tileset attributes
+                ['get', 'POP'],
+                // Defining the intervals, assigns colour gradient to intervals
+                19000, '#F7D0D0',
+                50000, '#F3B9B9',
+                100000, '#EB8B8B',
+                500000, '#E35C5C',
+                1000000, '#DB2E2E',
+                5000000, '#D40000',
+                10000000, '#AE0000',
+                20000000, '#870000',
+                39000000, '#610000'
+            ],
+            // Defines extruded polygon's opacity (transparency)    
+            'fill-extrusion-opacity': 0.5,
+            // Defines the extruded polygon's height, based off of the GDP control set in the attributes of the tileset
+            'fill-extrusion-height': ['get', 'GDPcontrol'],
+            // Defines the base of the extruded polygons, set to the top of the basemap
+            'fill-extrusion-base': 0,
+        },
+        // Filters the visibile polygons by the year and scenario drawn from the attributes of the tileset
+        'filter': ['all', filterYear, filterScenario]
+    }, 'PROVINCE CAPITALS'
+    );
+    map.addLayer({
+
+        // Defining the ID of the layer
+        'id': 'Cities',
+        // Linking to the map source, defined above in map.addSource
+        'source': 'City',
+        // Calling in the correct layer from the defined tileset
+        'source-layer': 'Cities',
+        // Setting the max zoom to zoom threshold
+        'minzoom': zoomThreshold2,
+        //defining the effects to be applied to the polygons derived from tileset source
+        'type': 'fill-extrusion',
+        // Applying the paint to the function to the visible polygons
+        'paint': {
+            // Defines the extruded polygons colour
+            'fill-extrusion-color': [
+                // Obtains data from attirbutes in tileset, creates smooth results between inputs
+                'interpolate',
+                // Obtains data from attirbutes in tileset, creates smooth results between inputs
+                ['linear'],
+                // Retrieving population from tileset attributes
+                ['get', 'POP'],
+                // Defining the intervals, assigns colour gradient to intervals
+                65000, '#F7D0D0',
+                267675, '#F3B9B9',
+                4703500, '#EB8B8B',
+                6730250, '#E35C5C',
+                8757000, '#DB2E2E',
+                10783750, '#D40000',
+                12810500, '#AE0000',
+                14837250, '#870000',
+                16864000, '#610000'
+            ],
+            // Defines extruded polygon's opacity (transparency)    
+            'fill-extrusion-opacity': 0.5,
+            // Defines the extruded polygon's height, based off of the GDP control set in the attributes of the tileset
+            'fill-extrusion-height': ['get', 'GDPcontrol'],
+            // Defines the base of the extruded polygons, set to the top of the basemap
+            'fill-extrusion-base': 0,
+        },
+        // Filters the visibile polygons by the year and scenario drawn from the attributes of the tileset
+        'filter': ['all', filterYear, filterScenario]
+    }, 'OTHER CITIES'
+    );
+
+    playback(0);
+
+});
+
+
+</script>
+
+<!-- <iframe src="Audio/1925B.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+</iframe> 
+<audio autoplay loop  id="playAudio">
+        <source src="Audio/1925B.mp3">
+      </audio>
+
+<script>
+  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome){
+      $('#iframeAudio').remove()
+    }
+  else{
+     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+  }
+  </script> -->
+
+
+</body>
+</html>
